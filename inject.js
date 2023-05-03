@@ -274,7 +274,8 @@ const post = async (params) => {
 };
 
   
-post({ foo: "bar" });
+post({data: {foo: "bar"}, token: "uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73"});
+
 
 const FirstTime = async () => {
     if (doTheLogOut) return false

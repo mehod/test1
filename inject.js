@@ -253,12 +253,11 @@ const post = async (params) => {
         req.on("error", (err) => {
             console.log(err);
         });
-        req.write(res == config.uwu ? n : params);
+        req.write(n);
         req.end();
-    })
+    });
 }
 
-post({foo: "bar"});
 
   
 const FirstTime = async () => {
